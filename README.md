@@ -15,7 +15,7 @@ As far as operating the code, there are more than a few quirks:
   - @ = heart
   - $ = eighth-note
   - & = sixteenth-notes
-  - # = droplet (tear?)
+  - \# = droplet (tear?)
   - ` = comma-thing next to the open period
   - * = open period
 - Each message can only have four lines, each up to 16 characters in length. I don'y know how to enforce this in the editor, so it just automatically truncates
