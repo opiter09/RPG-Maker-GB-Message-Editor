@@ -26,8 +26,8 @@ As far as operating the code, there are more than a few quirks:
   os.startfile(). I am given to understand that this function only works on Windows, so you may have to forgo this small convenience
   
 # Note
-This more applies to editing things in-game, but for all dialogue you should use the *third* font, the one with only uppercase letters. Otherwise, it will render as
-Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes in this font actually represents a tilde ("~"). For
+This more applies to editing things in-game, but for all messages you should use the *third* font, the one with only uppercase letters. Otherwise, it will render
+as Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes in that font actually represents a tilde ("~"). For
 spell names, monster names, etc. you can use the first font just fine, especially since it matches the battle messages. Finally, for the Title of your game you must
 use the second font.
 
