@@ -22,8 +22,8 @@ As far as operating the code, there are more than a few quirks:
   when saving to the save file
 - The "Save" button saves the text into memory, so that if you switch to another one and come back, it will be the same. The "Write All" button, on the other hand,
   actually writes it (and the other messages) into the save file
-- The "Run Game" button opens the game with the same name as the opened save file using os.startfile(). I am given to understand that this function only works on
-  Windows, so you may have to forgo this small convenience
+- The "Run Game" button opens the game with the same name as the opened save file in the default app (i.e. what happens when you double-click it) using
+  os.startfile(). I am given to understand that this function only works on Windows, so you may have to forgo this small convenience
   
 # Note
 This more applies to editing things in-game, but for all text other than the Title and Author, you should use the *third* font, the one with only uppercase letters.
