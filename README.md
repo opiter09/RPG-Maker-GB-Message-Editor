@@ -17,7 +17,7 @@ As far as operating the code, there are more than a few quirks:
   - & = sixteenth-notes
   - \# = droplet (tear?)
   - ` = comma-thing next to the open period
-  - * = open period
+  - \* = open period
 - Each message can only have four lines, each up to 16 characters in length. I don'y know how to enforce this in the editor, so it just automatically truncates
   when saving to the save file
 - The "Save" button saves the text into memory, so that if you switch to another one and come back, it will be the same. The "Write All" button, on the other hand,
