@@ -1,5 +1,4 @@
 import os
-import textwrap
 import PySimpleGUI as psg
 
 cont = 0
