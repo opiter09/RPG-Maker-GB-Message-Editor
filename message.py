@@ -1,4 +1,5 @@
 import os
+import textwrap
 import PySimpleGUI as psg
 
 cont = 0
@@ -84,14 +85,15 @@ def run():
 
     layout = [
         [
-            psg.Multiline(size = (20, 4), default_text = texts[cont], no_scrollbar = True, rstrip = False, key = "line"),
-            psg.DropDown([str(texts.index(x)).zfill(3) + " " + x[0:16].replace("\n", "/") for x in texts],
+            psg.Multiline(size = (18, 4), default_text = texts[cont], no_scrollbar = True, rstrip = False, key = "line"),
+            psg.DropDown([str(texts.index(x)).zfill(3) + " " + x[0:16].replace("\n", "/") for x in texts], size = (23, 1),
                 default_value = str(cont).zfill(3) + " " + texts[cont][0:16].replace("\n", "/"), enable_events = True, key = "drop")
         ],
         [ psg.Button("Save"), psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game") ]
     ]
 
-    window = psg.Window("", layout, grab_anywhere = True, font = "-size 12")
+    window = psg.Window("", layout, grab_anywhere = True, font = "-size 12").Finalize()
+    window["line"].Widget.configure(wrap = "none")
 
     while True:
         event, values = window.read()
