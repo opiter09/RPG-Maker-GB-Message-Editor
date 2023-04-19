@@ -28,7 +28,8 @@ As far as operating the code, there are more than a few quirks:
 # Note
 This more applies to editing things in-game, but for all dialogue you should use the *third* font, the one with only uppercase letters. Otherwise, it will render as
 Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes in this font actually represents a tilde ("~"). For
-spell names, monster names, etc. you can use the first font just fine, especially since it matches the battle messages.
+spell names, monster names, etc. you can use the first font just fine, especially since it matches the battle messages. Finally, for the Title of your game you must
+use the second font.
 
 #  Credits
 - Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this
