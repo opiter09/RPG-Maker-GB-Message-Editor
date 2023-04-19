@@ -26,9 +26,9 @@ As far as operating the code, there are more than a few quirks:
   os.startfile(). I am given to understand that this function only works on Windows, so you may have to forgo this small convenience
   
 # Note
-This more applies to editing things in-game, but for all text other than the Title and Author, you should use the *third* font, the one with only uppercase letters.
-Otherwise, it will render as Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes actually represents a
-tilde ("~").
+This more applies to editing things in-game, but for all dialogue you should use the *third* font, the one with only uppercase letters. Otherwise, it will render as
+Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes in this font actually represents a tilde ("~"). For
+spell names, monster names, etc. you can use the first font just fine, especially since it matches the battle messages.
 
 #  Credits
 - Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this
