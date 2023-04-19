@@ -18,7 +18,7 @@ As far as operating the code, there are more than a few quirks:
   - \# = droplet (tear?)
   - ` = comma-thing next to the open period
   - \* = open period
-- Each message can only have four lines, each up to 16 characters in length. I don'y know how to enforce this in the editor, so it just automatically truncates
+- Each message can only have four lines, each up to 16 characters in length. I don't know how to enforce this in the editor, so it just automatically truncates
   when saving to the save file
 - The "Save" button saves the text into memory, so that if you switch to another one and come back, it will be the same. The "Write All" button, on the other hand,
   actually writes it (and the other messages) into the save file
@@ -29,3 +29,7 @@ As far as operating the code, there are more than a few quirks:
 This more applies to editing things in-game, but for all text other than the Title and Author, you should use the *third* font, the one with only uppercase letters.
 Otherwise, it will render as Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes actually represents a
 tilde ("~").
+
+#  Credits
+- Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this
+- Thanks to MageCraft Translations, for fan-translating this game over 20 years ago (see https://www.romhacking.net/translations/42/)
