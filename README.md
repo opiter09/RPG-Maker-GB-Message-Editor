@@ -8,7 +8,7 @@ As far as operating the code, there are more than a few quirks:
 - You can only edit messages that exist already in the save. I do not know how message space is allocated, and I could not even find the pointers to them, so just
   deal with it (and make sure to make each message's original text distinguishable from each other)
 - Although messages are only shown in uppercase, you can type in any case you want; it will be converted automatically
-- The quotes are "Japanese-style" with the right-angle things, so you must enter them in the editor using square brackets ("[]")
+- The quotes are "Japanese-style" with the right-angle things, so you must enter them in the editor using square brackets ("\[" and "\]")
 - The other special characters are entered as follows:
   - ; = mid-period
   - … (fancy ellipsis character) = four dots
