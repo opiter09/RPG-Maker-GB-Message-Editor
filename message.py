@@ -107,14 +107,22 @@ def run():
         cont = -1
         return
 
+    lengths = [0, 0, 0, 0]
+    for i in range(4):
+        try:
+            lengths[i] = len(texts[cont].upper().split("\n")[i])
+        except:
+            pass
+    lString = str(lengths[0]) + " / " + str(lengths[1]) + " / " + str(lengths[2]) + " / " + str(lengths[3])
+
     layout = [
         [
-            psg.Multiline(size = (18, 4), default_text = texts[cont], no_scrollbar = True, rstrip = False, key = "line"),
+            psg.Multiline(size = (20, 4), default_text = texts[cont], no_scrollbar = True, rstrip = False, enable_events = True, key = "line"),
             psg.DropDown([str(texts.index(x)).zfill(3) + " " + x[0:16].replace("\n", "/") for x in texts], size = (23, 1),
                 default_value = str(cont).zfill(3) + " " + texts[cont][0:16].replace("\n", "/"), enable_events = True, key = "drop")
         ],
-        [ psg.Button("Save"), psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game") ],
-        [ psg.Text("Replace"), psg.Input(size = 10, key = "one"), psg.Text("with"), psg.Input(size = 10, key = "two"), psg.Button("Replace All") ]
+        [ psg.Button("Save"), psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game"), psg.Text(lString, key = "show") ],
+        [ psg.Text("Replace"), psg.Input(size = 10, key = "one"), psg.Text("with"), psg.Input(size = 10, key = "two"),psg.Button("Replace All") ]
     ]
 
     window = psg.Window("", layout, grab_anywhere = True, font = "-size 12").Finalize()
@@ -129,15 +137,31 @@ def run():
         elif (event == "drop"):
             window["line"].update(texts[int(values["drop"][0:3])])
         elif (event == "Save"):
-            texts[int(values["drop"][0:3])] = window["line"].get()[0:-1].upper()
+            quote = ""
+            for line in window["line"].get()[0:-1].upper().split("\n")[0:4]:
+                if (len(line) >= 16):
+                    quote = quote + line[0:16] + "\n"
+                else:
+                    quote = quote + line + "\n"
+            if (quote[-1] == "\n"):
+                quote = quote[0:-1]
+            texts[int(values["drop"][0:3])] = quote
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
-            window["line"].update(window["line"].get().upper())
+            window["line"].update(quote)
         elif (event == "Write All"):
-            texts[int(values["drop"][0:3])] = window["line"].get()[0:-1].upper()
+            quote = ""
+            for line in window["line"].get()[0:-1].upper().split("\n")[0:4]:
+                if (len(line) >= 16):
+                    quote = quote + line[0:16] + "\n"
+                else:
+                    quote = quote + line + "\n"
+            if (quote[-1] == "/"):
+                quote = quote[0:-1]
+            texts[int(values["drop"][0:3])] = quote
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
-            window["line"].update(window["line"].get().upper())
+            window["line"].update(quote)
             try:
                 writeData(starts, originals, texts, reading, thingy)
             except:
@@ -156,11 +180,27 @@ def run():
                 if (values["one"].upper() in texts[i]):
                     total = total + 1
                     texts[i] = texts[i].replace(values["one"].upper(), values["two"].upper())
+                    quote = ""
+                    for line in texts[i].upper().split("\n")[0:4]:
+                        if (len(line) >= 16):
+                            quote = quote + line[0:16] + "\n"
+                        else:
+                            quote = quote + line + "\n"
+                    if (quote[-1] == "\n"):
+                        quote = quote[0:-1]
+                    texts[i] = quote
             window["line"].update(texts[int(values["drop"][0:3])])
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
-            window["line"].update(window["line"].get().upper())
-            psg.popup("Text in " + str(total) + " message(s) has been replaced!", font = "-size 12")
+            psg.popup("Text in " + str(total) + " message(s) has been replaced!", font = "-size 12") 
+
+        lengths = [0, 0, 0, 0]
+        for i in range(4):
+            try:
+                lengths[i] = len(window["line"].get()[0:-1].upper().split("\n")[i])
+            except:
+                pass
+        window["show"].update(str(lengths[0]) + " / " + str(lengths[1]) + " / " + str(lengths[2]) + " / " + str(lengths[3]))
         
     # Finish up by removing from the screen
     window.close()

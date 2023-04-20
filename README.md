@@ -19,7 +19,7 @@ As far as operating the code, there are more than a few quirks:
   - ` = comma-thing next to the open period
   - \* = open period
 - Each message can only have four lines, each up to 16 characters in length. I don't know how to enforce this in the editor, so it just automatically truncates
-  when saving to the save file
+  when saving and writing. Please note the four numbers next to the row of buttons, however--they show the lengths of each line in the current message
 - The "Save" button saves the text into memory, so that if you switch to another one and come back, it will be the same. The "Write All" button, on the other hand,
   actually writes it (and the other messages) into the save file
 - The "Run Game" button opens the game with the same name as the opened save file in the default app (i.e. what happens when you double-click it) using
