@@ -24,6 +24,10 @@ As far as operating the code, there are more than a few quirks:
   actually writes it (and the other messages) into the save file
 - The "Run Game" button opens the game with the same name as the opened save file in the default app (i.e. what happens when you double-click it) using
   os.startfile(). I am given to understand that this function only works on Windows, so you may have to forgo this small convenience
+- The find-and-replace does not try to word wrap or anything like that, so be careful if you try to replace a shorter phrase with a longer one. Also, it affects all
+  instances in all messages, not just all instances in the current message
+- The program will not tell you if you reach the size limit for messages; it will just cut off the message data at the (likely) maximum location of 0x6000. Therefore,
+  you should check in with the game often; you can see your "Data Limit" by going to Message and then choosing any sub-menu.
   
 # Note
 This more applies to editing things in-game, but for all messages you should use the *third* font, the one with only uppercase letters. Otherwise, it will render
