@@ -11,6 +11,7 @@ def writeData(starts, originals, texts, reading, thingy):
     new = open(fileName, "ab")
     new.write(reading[0:starts[0]])
     shift = 0
+    space = 0
     for i in range(len(starts) - 1):
         quote = texts[i].split("\n")[0:4]
         quote2 = ""
@@ -28,6 +29,7 @@ def writeData(starts, originals, texts, reading, thingy):
                     break
         new.write(reading[(starts[i] + len(originals[i])):starts[i + 1]])
         shift = shift + len(quote2) - len(originals[i])
+        space = space + len(quote2)
     if (shift < 0):
         for i in range(abs(shift)):
             new.write((0xAF).to_bytes(1, "little"))
@@ -37,6 +39,7 @@ def writeData(starts, originals, texts, reading, thingy):
     else:
         new.write(reading[starts[-1]:])
     new.close()
+    psg.popup("Write complete!" + "\n" + str(0x6000 - 0x2F57 - space) + " bytes remaining!", font = "-size 12")
     
 def run():
     global cont
@@ -100,7 +103,7 @@ def run():
             texts.append(quote2)
     
     if (len(texts) == 0):
-        psg.popup("No suitable strings were found!")
+        psg.popup("No suitable strings were found!", font = "-size 12")
         cont = -1
         return
 
@@ -135,11 +138,10 @@ def run():
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             window["line"].update(window["line"].get().upper())
-            # try:
-            writeData(starts, originals, texts, reading, thingy)
-            psg.popup("Write complete!")
-            # except:
-                # psg.popup("Write failed!")
+            try:
+                writeData(starts, originals, texts, reading, thingy)
+            except:
+                psg.popup("Write failed!", font = "-size 12")
         elif (event == "Reload"):
             cont = int(values["drop"][0:3])
             break
@@ -147,7 +149,7 @@ def run():
             try:
                 os.startfile(fileName[0:-4] + ".gbc")
             except:
-                psg.popup("The game file cannot be found!")
+                psg.popup("The game file cannot be found!", font = "-size 12")
         elif (event == "Replace All"):
             total = 0
             for i in range(len(texts)):
@@ -158,7 +160,7 @@ def run():
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             window["line"].update(window["line"].get().upper())
-            psg.popup("Text in " + str(total) + " message(s) has been replaced!")
+            psg.popup("Text in " + str(total) + " message(s) has been replaced!", font = "-size 12")
         
     # Finish up by removing from the screen
     window.close()
