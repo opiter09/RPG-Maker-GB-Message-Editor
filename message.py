@@ -77,7 +77,7 @@ def run():
         for i in range(num, num + 64):
             if (reading[i] == 0xAF):
                 break
-            elif (reading[i] < 80):
+            elif (reading[i] < 0x80):
                 starts.remove(num)
                 forward = 1
                 break
