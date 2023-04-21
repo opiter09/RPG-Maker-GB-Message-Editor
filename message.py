@@ -137,8 +137,12 @@ def run():
         elif (event == "drop"):
             window["line"].update(texts[int(values["drop"][0:3])])
         elif (event == "Save"):
+            temp = window["line"].get()
+            for ch in window["line"].get():
+                if ((ch not in thingy.values()) and (ch != "\n")):
+                    temp = temp.replace(ch, "")
             quote = ""
-            for line in window["line"].get()[0:-1].upper().split("\n")[0:4]:
+            for line in temp[0:-1].upper().split("\n")[0:4]:
                 if (len(line) >= 16):
                     quote = quote + line[0:16] + "\n"
                 else:
@@ -150,13 +154,17 @@ def run():
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             window["line"].update(quote)
         elif (event == "Write All"):
+            temp = window["line"].get()
+            for ch in window["line"].get():
+                if ((ch not in thingy.values()) and (ch != "\n")):
+                    temp = temp.replace(ch, "")
             quote = ""
-            for line in window["line"].get()[0:-1].upper().split("\n")[0:4]:
+            for line in temp[0:-1].upper().split("\n")[0:4]:
                 if (len(line) >= 16):
                     quote = quote + line[0:16] + "\n"
                 else:
                     quote = quote + line + "\n"
-            if (quote[-1] == "/"):
+            if (quote[-1] == "\n"):
                 quote = quote[0:-1]
             texts[int(values["drop"][0:3])] = quote
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
@@ -175,6 +183,14 @@ def run():
             except:
                 psg.popup("The game file cannot be found!", font = "-size 12")
         elif (event == "Replace All"):
+            bad = 0
+            for ch in values["two"].upper():
+                if (ch not in thingy.values()):
+                    psg.popup("Invalid character detected!", font = "-size 12")
+                    bad = 1
+                    break
+            if (bad == 1):
+                continue
             total = 0
             for i in range(len(texts)):
                 if (values["one"].upper() in texts[i]):
