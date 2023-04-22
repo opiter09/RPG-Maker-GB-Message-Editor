@@ -10,8 +10,8 @@ As far as operating the code, there are more than a few quirks:
 - Although messages are only shown in uppercase, you can type in any case you want; it will be converted automatically
 - The quotes are "Japanese-style" with the right-angle things, so you must enter them in the editor using square brackets ("\[" and "\]")
 - The other special characters are entered as follows:
-  - ; = mid-period
-  - … (fancy ellipsis character) = four dots
+  - ; = middle dot
+  - > = ellipsis
   - @ = heart
   - $ = eighth-note
   - & = sixteenth-notes
