@@ -137,8 +137,8 @@ def run():
         elif (event == "drop"):
             window["line"].update(texts[int(values["drop"][0:3])])
         elif (event == "Save"):
-            temp = window["line"].get()
-            for ch in window["line"].get():
+            temp = window["line"].get().upper()
+            for ch in window["line"].get().upper():
                 if ((ch not in thingy.values()) and (ch != "\n")):
                     temp = temp.replace(ch, "")
             quote = ""
@@ -154,8 +154,8 @@ def run():
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             window["line"].update(quote)
         elif (event == "Write All"):
-            temp = window["line"].get()
-            for ch in window["line"].get():
+            temp = window["line"].get().upper()
+            for ch in window["line"].get().upper():
                 if ((ch not in thingy.values()) and (ch != "\n")):
                     temp = temp.replace(ch, "")
             quote = ""
