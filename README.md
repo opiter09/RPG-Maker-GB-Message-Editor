@@ -26,6 +26,8 @@ As far as operating the code, there are more than a few quirks:
   os.startfile(). I am given to understand that this function only works on Windows, so you may have to forgo this small convenience
 - The find-and-replace does not try to word wrap or anything like that, so be careful if you try to replace a shorter phrase with a longer one. Also, it affects all
   instances in all messages, not just all instances in the current message
+
+Finally, if you are new to downloading things off of GitHub, know that you may download these files by pressing the green "Code" button, and then selecting "Download ZIP."
   
 # Note
 This more applies to editing things in-game, but for all messages you should use the *third* font, the one with only uppercase letters. Otherwise, it will render
