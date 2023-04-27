@@ -11,7 +11,7 @@ As far as operating the code, there are more than a few quirks:
 - The quotes are "Japanese-style" with the right-angle things, so you must enter them in the editor using square brackets ("\[" and "\]")
 - The other special characters are entered as follows:
   - ; = middle dot
-  - > = ellipsis
+  - \> = ellipsis
   - @ = heart
   - $ = eighth-note
   - & = sixteenth-notes
