@@ -33,7 +33,7 @@ Finally, if you are new to downloading things off of GitHub, know that you may d
 This more applies to editing things in-game, but for all messages you should use the *third* font, the one with only uppercase letters. Otherwise, it will render
 as Japanese in-game for some reason. Furthermore, the blank characer in between the dash and the Japanese-quotes in that font actually represents a tilde ("~"). For
 spell names, monster names, etc. you can use the first font just fine, especially since it matches the battle messages. Finally, for the Title of your game you must
-use the second font.
+use the third font as well.
 
 #  Credits
 - Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this

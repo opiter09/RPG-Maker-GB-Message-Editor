@@ -220,6 +220,7 @@ def run():
         
     # Finish up by removing from the screen
     window.close()
-    
-while (cont > -1):
-    run()
+
+def loopFunc():
+    while (cont > -1):
+        run()
