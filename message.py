@@ -132,7 +132,7 @@ def run():
         event, values = window.read()
         # See if user wants to quit or window was closed
         if (event == psg.WINDOW_CLOSED) or (event == "Quit"):
-            cont = 1
+            cont = -1
             break
         elif (event == "drop"):
             window["line"].update(texts[int(values["drop"][0:3])])
@@ -175,7 +175,7 @@ def run():
             except:
                 psg.popup("Write failed!", font = "-size 12")
         elif (event == "Reload"):
-            cont = 0
+            cont = int(values["drop"][0:3])
             break
         elif (event == "Run Game"):
             try:
@@ -222,5 +222,5 @@ def run():
     window.close()
 
 def loopFunc():
-    while (cont != 1):
+    while (cont > -1):
         run()

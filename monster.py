@@ -1,7 +1,7 @@
 import os
 import PySimpleGUI as psg
 
-cont = 0
+cont = [0, 0]
 fileName = ""
 
 def writeData(starts, originals, texts, reading, thingy):
@@ -82,16 +82,16 @@ def run():
         binList = [ int(binary[x]) for x in range(2, len(binary)) ]
         data.append([quote, int.from_bytes(reading[(num + 22):(num + 26)], "little"), reading[num + 21] // 16] + binList)
     
-    names = [str(i).zfill(3) + " " + data[i][0] for i in list(range(len(data)))]
-    types = ["Attack", "Defend", "Assist", "Magic"]
+    names = [x[0] for x in data]
+    types = ["Attack", "Defense", "Assist", "Magic"]
     pages = ["Page 1", "Page 2", "Page 3", "Page 4", "Page 5"]
     layout = [
-        [ psg.DropDown(names, enable_events = True, default_value = names[0], size = (12, 1), key = "monster") ],
+        [ psg.DropDown(names, enable_events = True, default_value = names[0], key = "monster") ],
         [
             psg.DropDown(types, enable_events = True, default_value = types[data[0][2]], key = "type"),
             psg.DropDown(pages, enable_events = True, default_value = pages[0], key = "page")
         ],
-        [ psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game") ],
+        [ psg.Button("Save"), psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game") ],
     ]
 
     window = psg.Window("", layout, grab_anywhere = True, font = "-size 12").Finalize()
@@ -100,7 +100,7 @@ def run():
         event, values = window.read()
         # See if user wants to quit or window was closed
         if (event == psg.WINDOW_CLOSED) or (event == "Quit"):
-            cont = 1
+            cont = [-1, -1]
             break
         elif (event == "drop"):
             window["line"].update(texts[int(values["drop"][0:3])])
@@ -143,7 +143,7 @@ def run():
             except:
                 psg.popup("Write failed!", font = "-size 12")
         elif (event == "Reload"):
-            cont = 0
+            cont = int(values["drop"][0:3])
             break
         elif (event == "Run Game"):
             try:
@@ -177,10 +177,18 @@ def run():
             window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             psg.popup("Text in " + str(total) + " message(s) has been replaced!", font = "-size 12") 
+
+        lengths = [0, 0, 0, 0]
+        for i in range(4):
+            try:
+                lengths[i] = len(window["line"].get()[0:-1].upper().split("\n")[i])
+            except:
+                pass
+        window["show"].update(str(lengths[0]) + " / " + str(lengths[1]) + " / " + str(lengths[2]) + " / " + str(lengths[3]))
         
     # Finish up by removing from the screen
     window.close()
 
 def loopFunc():
-    while (cont != 1):
+    while (cont != [-1, -1]):
         run()
