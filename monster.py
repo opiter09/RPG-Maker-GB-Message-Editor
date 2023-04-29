@@ -78,19 +78,8 @@ def run():
                 quote = quote + thingy[reading[i]]
             except:
                 quote = quote + " "
-        binList = []
-        for i in range(num + 22, num + 26):
-            integer = reading[i]
-            small = bin(integer - (integer % 16))[2:]
-            small = small[::-1]
-            small = small + ("0" * (4 - len(small)))
-            small2 = bin(integer % 16)[2:]
-            small2 = small2[::-1]
-            small2 = small2 + ("0" * (4 - len(small2)))
-            small3 = small2 + small
-            binList = binList + [ int(x) for x in small3 ]
-        binList = binList + ([0] * (64 - len(binList)))
-        # print(binList)
+        binary = bin(int.from_bytes(reading[(num + 22):(num + 26)], "little"))
+        binList = [ int(binary[x]) for x in range(2, len(binary)) ]
         data.append([quote, int.from_bytes(reading[(num + 22):(num + 26)], "little"), reading[num + 21] // 16] + binList)
     
     names = [str(i).zfill(3) + " " + data[i][0] for i in list(range(len(data)))]
