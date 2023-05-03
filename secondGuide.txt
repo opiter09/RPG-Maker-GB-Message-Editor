@@ -1,0 +1,16 @@
+The codes after 0x80 represent the weird symbols and stuff on the right of the screen. The table won't
+let me put in comments, so here is a guide:
+17 = BU
+18 = UY
+19 = SE
+1A = LL
+1B = EX
+1C = IT
+1D = X
+1E = check
+1F = weird x
+20 = LL
+21 = EX
+22 = IT
+23 = X
+24 = check
