@@ -113,17 +113,28 @@ def run():
             lengths[i] = len(texts[cont].upper().split("\n")[i])
         except:
             pass
-    lString = str(lengths[0]) + " / " + str(lengths[1]) + " / " + str(lengths[2]) + " / " + str(lengths[3])
+    lString = str(lengths[0])[0:2].zfill(2) + " / " + str(lengths[1])[0:2].zfill(2) + " / " + str(lengths[2])[0:2].zfill(2) + " / " + str(lengths[3])[0:2].zfill(2)
 
-    layout = [
+    subLayout = [
         [
             psg.Multiline(size = (20, 4), default_text = texts[cont], no_scrollbar = True, rstrip = False, enable_events = True, key = "line"),
             psg.DropDown([str(texts.index(x)).zfill(3) + " " + x[0:16].replace("\n", "/") for x in texts], size = (23, 1),
                 default_value = str(cont).zfill(3) + " " + texts[cont][0:16].replace("\n", "/"), enable_events = True, key = "drop")
         ],
         [ psg.Button("Save"), psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game"), psg.Text(lString, key = "show") ],
-        [ psg.Text("Replace"), psg.Input(size = 10, key = "one"), psg.Text("with"), psg.Input(size = 10, key = "two"),psg.Button("Replace All") ]
+        [ psg.Text("Replace"), psg.Input(size = 10, key = "one"), psg.Text("with"), psg.Input(size = 10, key = "two"), psg.Button("Replace All") ]
     ]
+    charMap = "[ = open quotes\n\
+] = close quotes\n\
+; = middle dot\n\
+> = ellipsis\n\
+@ = heart\n\
+$ = eighth-note\n\
+& = sixteenth-notes\n\
+# = droplet/tear\n\
+* = open period\n\
+` = comma-thing"
+    layout = [ [psg.Column(subLayout), psg.Column([[psg.Text(charMap)]])] ]
 
     window = psg.Window("", layout, grab_anywhere = True, font = "-size 12").Finalize()
     window["line"].Widget.configure(wrap = "none")
@@ -216,7 +227,7 @@ def run():
                 lengths[i] = len(window["line"].get()[0:-1].upper().split("\n")[i])
             except:
                 pass
-        window["show"].update(str(lengths[0]) + " / " + str(lengths[1]) + " / " + str(lengths[2]) + " / " + str(lengths[3]))
+        window["show"].update(str(lengths[0])[0:2].zfill(2) + " / " + str(lengths[1])[0:2].zfill(2) + " / " + str(lengths[2])[0:2].zfill(2) + " / " + str(lengths[3])[0:2].zfill(2))
         
     # Finish up by removing from the screen
     window.close()
