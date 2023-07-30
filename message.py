@@ -19,8 +19,8 @@ def writeData(starts, originals, texts, reading, thingy):
             if (len(line) >= 16):
                 quote2 = quote2 + line[0:16]
             else:
-                quote2 = quote2 + line + "/"
-        if (quote2[-1] == "/"):
+                quote2 = quote2 + line + "|"
+        while (quote2[-1] in ["\n", "|"]):
             quote2 = quote2[0:-1]
         for ch in quote2.upper():
             for k in thingy.keys():
@@ -98,7 +98,7 @@ def run():
                         quote2 = quote2 + line[i:(i + 16)] + "\n"
                 else:
                     quote2 = quote2 + line + "\n"
-            if (quote2[-1] == "\n"):
+            while (quote2[-1] in ["\n", "|"]):
                 quote2 = quote2[0:-1]
             texts.append(quote2)
     
@@ -118,8 +118,8 @@ def run():
     subLayout = [
         [
             psg.Multiline(size = (20, 4), default_text = texts[cont], no_scrollbar = True, rstrip = False, enable_events = True, key = "line"),
-            psg.DropDown([str(texts.index(x)).zfill(3) + " " + x[0:16].replace("\n", "/") for x in texts], size = (23, 1),
-                default_value = str(cont).zfill(3) + " " + texts[cont][0:16].replace("\n", "/"), enable_events = True, key = "drop")
+            psg.DropDown([str(texts.index(x)).zfill(3) + " " + x[0:16].replace("\n", "|") for x in texts], size = (23, 1),
+                default_value = str(cont).zfill(3) + " " + texts[cont][0:16].replace("\n", "|"), enable_events = True, key = "drop")
         ],
         [ psg.Button("Save"), psg.Button("Write All"), psg.Button("Reload"), psg.Button("Run Game"), psg.Text(lString, key = "show") ],
         [ psg.Text("Replace"), psg.Input(size = 10, key = "one"), psg.Text("with"), psg.Input(size = 10, key = "two"), psg.Button("Replace All") ]
@@ -158,10 +158,10 @@ $ = eighth-note\n\
                     quote = quote + line[0:16] + "\n"
                 else:
                     quote = quote + line + "\n"
-            if (quote[-1] == "\n"):
+            while (quote[-1] in ["\n", "|"]):
                 quote = quote[0:-1]
             texts[int(values["drop"][0:3])] = quote
-            window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
+            window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "|") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             window["line"].update(quote)
         elif (event == "Write All"):
@@ -175,10 +175,10 @@ $ = eighth-note\n\
                     quote = quote + line[0:16] + "\n"
                 else:
                     quote = quote + line + "\n"
-            if (quote[-1] == "\n"):
+            while (quote[-1] in ["\n", "|"]):
                 quote = quote[0:-1]
             texts[int(values["drop"][0:3])] = quote
-            window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
+            window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "|") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             window["line"].update(quote)
             try:
@@ -213,11 +213,11 @@ $ = eighth-note\n\
                             quote = quote + line[0:16] + "\n"
                         else:
                             quote = quote + line + "\n"
-                    if (quote[-1] == "\n"):
+                    while (quote[-1] in ["\n", "|"]):
                         quote = quote[0:-1]
                     texts[i] = quote
             window["line"].update(texts[int(values["drop"][0:3])])
-            window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "/") for x in texts])
+            window["drop"].update(values = [str(texts.index(x)).zfill(3) + " " + x[0:16].upper().replace("\n", "|") for x in texts])
             window["drop"].update(set_to_index = int(values["drop"][0:3]))
             psg.popup("Text in " + str(total) + " message(s) has been replaced!", font = "-size 12") 
 
