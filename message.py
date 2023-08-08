@@ -132,8 +132,7 @@ def run():
 $ = eighth-note\n\
 & = sixteenth-notes\n\
 # = droplet/tear\n\
-* = open period\n\
-` = comma-thing"
+* = open period"
     layout = [ [psg.Column(subLayout), psg.Column([[psg.Text(charMap)]])] ]
 
     window = psg.Window("", layout, grab_anywhere = True, font = "-size 12").Finalize()
