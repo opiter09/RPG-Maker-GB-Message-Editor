@@ -16,7 +16,6 @@ As far as operating the code, there are more than a few quirks:
   - $ = eighth-note
   - & = sixteenth-notes
   - \# = droplet (tear?)
-  - ` = comma-thing next to the open period
   - \* = open period
 - Each message can only have four lines, each up to 16 characters in length. I don't know how to enforce this in the editor, so it just automatically truncates
   when saving and writing. Please note the four numbers next to the row of buttons, however--they show the lengths of each line in the current message
