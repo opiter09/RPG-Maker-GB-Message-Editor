@@ -1,5 +1,5 @@
 import os
-import PySimpleGUI as psg
+import FreeSimpleGUI as psg
 
 cont = 0
 fileName = ""
