@@ -36,3 +36,4 @@ for the Title of your game you must use the third font as well.
 #  Credits
 - Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this
 - Thanks to MageCraft Translations, for fan-translating this game over 20 years ago (see https://www.romhacking.net/translations/42/)
+  [NOTE: if you did not get here from it, this translation has been superseded by my own: https://www.romhacking.net/translations/6922/]
