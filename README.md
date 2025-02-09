@@ -35,5 +35,5 @@ for the Title of your game you must use the third font as well.
 
 #  Credits
 - Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this
-- Thanks to MageCraft Translations, for fan-translating this game over 20 years ago (see https://www.romhacking.net/translations/42/).
+- Thanks to MageCraft Translations, for fan-translating this game over 20 years ago (https://www.romhacking.net/translations/42/).
   However, do note that this fan-translation has been superseded by my own (https://romhackplaza.org/translations/rpg-maker-gb-english-translation-gbc/)
