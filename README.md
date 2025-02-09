@@ -1,6 +1,6 @@
 # RPG-Maker-GB-Message-Editor
-This small code allows you to edit existing messages in the fan-translation of the game RPG Tsukuru GB with an actual keyboard. Although it is a smaller ROM,
-and thus contains less assets, than its sequel, this game's fan translation is far more complete, and so that is why I have chosen to target it.
+This small code allows you to edit existing messages in the fan-translation of the game RPG Tsukuru GB with an actual keyboard. Although it is a smaller ROM (and thus contains less assets) than its sequel, this game's fan translation
+is far more complete, and so that is why I have chosen to target it.
 
 As far as operating the code, there are more than a few quirks:
 - Instead of making you choose a save file, the program automatically selects the first .sav file in its folder of exactly 32,768 bytes. So try not to have more than
@@ -35,5 +35,5 @@ for the Title of your game you must use the third font as well.
 
 #  Credits
 - Thanks to PySimpleGUI, for making it trivial to make a GUI (and then an .exe) for this
-- Thanks to MageCraft Translations, for fan-translating this game over 20 years ago (see https://www.romhacking.net/translations/42/)
-  [NOTE: if you did not get here from it, this translation has been superseded by my own: https://www.romhacking.net/translations/6922/]
+- Thanks to MageCraft Translations, for fan-translating this game over 20 years ago (see https://www.romhacking.net/translations/42/).
+  However, do note that this fan-translation has been superseded by my own (https://romhackplaza.org/translations/rpg-maker-gb-english-translation-gbc/)
