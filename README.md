@@ -1,6 +1,6 @@
 # RPG-Maker-GB-Message-Editor
 This small code allows you to edit existing messages in the fan-translation of the game RPG Tsukuru GB with an actual keyboard. Although it is a smaller ROM (and thus contains less assets) than its sequel, this game's fan translation
-is far more complete, and so that is why I have chosen to target it.
+is far more complete, so that is why I have chosen to target it.
 
 As far as operating the code, there are more than a few quirks:
 - Instead of making you choose a save file, the program automatically selects the first .sav file in its folder of exactly 32,768 bytes. So try not to have more than
